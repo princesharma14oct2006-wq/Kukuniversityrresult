@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KUK Student Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+}
+header {
+    background: #8b0000;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 320px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+    text-align: center;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover {
+    background: #a50000;
+}
+.hidden { display: none; }
+</style>
+</head>
+
+<body>
+
+<header>Kurukshetra University Student Portal</header>
+
+<div class="container">
+
+    <!-- LOGIN -->
+    <div class="box" id="loginBox">
+        <h2>Login</h2>
+        <input type="text" placeholder="Roll Number">
+        <input type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="error" style="color:red;"></p>
+    </div>
+
+    <!-- LOADING -->
+    <div class="box hidden" id="loadingBox">
+        <h2>Logging in...</h2>
+        <p>Please wait</p>
+    </div>
+
+    <!-- RESULT PAGE -->
+    <div class="box hidden" id="resultBox">
+        <h2>Result Portal</h2>
+        <p>Click below to view your result</p>
+        <button onclick="rickroll()">View Result</button>
+    </div>
+
+</div>
+
+<script>
+let attempt = 0;
+
+function login() {
+    attempt++;
+
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("loadingBox").classList.remove("hidden");
+
+    setTimeout(() => {
+
+        document.getElementById("loadingBox").classList.add("hidden");
+
+        // First attempt shows error
+        if (attempt === 1) {
+            document.getElementById("loginBox").classList.remove("hidden");
+            document.getElementById("error").innerText = "Invalid password. Try again.";
+        } 
+        else {
+            document.getElementById("resultBox").classList.remove("hidden");
+        }
+
+    }, 2000);
+}
+
+function rickroll() {
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+}
+</script>
+
+</body>
+</html>
